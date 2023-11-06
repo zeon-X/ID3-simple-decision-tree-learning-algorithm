@@ -1,5 +1,7 @@
 import math
 
+dictionary_tree = ()
+
 
 def calculate_whole_entropy(data, feature_index):
     total_samples = len(data)
@@ -106,6 +108,31 @@ def get_me_max_gain(information_gains):
 
     return maxGain
 
+
+def get_the_decision(data, feature_index, value):
+    res = ""
+
+    for tuple in data:
+        if (tuple[feature_index] == value):
+            res = tuple[-1]
+            break
+
+    return res
+
+
+def get_me_new_data(data, feature_index, value):
+    newData = []
+
+    for tuple in data:
+        if (tuple[feature_index] == value):
+            # row_without_first_element = tuple[1:]
+            touple_without_index_element = tuple[:feature_index] + \
+                tuple[feature_index+1:]
+            newData.append(touple_without_index_element)
+            # print(touple_without_index_element)
+
+    return newData
+
 # -----------Example usage with your provided dataset
 # data = [
 #     [2, 3, 1, 1, 1],  # 36-55, Master's, High, Single, Yes
@@ -131,26 +158,26 @@ def get_me_max_gain(information_gains):
 
 
 data = [
-    ["36-55", "Master's", "High", "Single", 1],
-    ["18-35", "High School", "Low", "Single", 0],
-    ["36-55", "Master's", "Low", "Single", 1],
-    ["18-35", "Bachelor's", "High", "Single", 0],
-    ["<18", "High School", "Low", "Single", 1],
-    ["18-35", "Bachelor's", "High", "Married", 0],
-    ["36-55", "Bachelor's", "Low", "Married", 0],
-    [">55", "Bachelor's", "High", "Single", 1],
-    ["36-55", "Master's", "Low", "Married", 0],
-    [">55", "Master's", "Low", "Married", 1],
-    ["36-55", "Master's", "High", "Single", 1],
-    [">55", "Master's", "High", "Single", 1],
-    ["<18", "High School", "High", "Single", 0],
-    ["36-55", "Master's", "Low", "Single", 1],
-    ["36-55", "High School", "Low", "Single", 1],
-    ["<18", "High School", "Low", "Married", 1],
-    ["18-35", "Bachelor's", "High", "Married", 0],
-    [">55", "High School", "High", "Married", 1],
-    [">55", "Bachelor's", "Low", "Single", 1],
-    ["36-55", "High School", "High", "Married", 0]
+    ["36-55", "Master's", "High", "Single", "YES"],
+    ["18-35", "High School", "Low", "Single", "NO"],
+    ["36-55", "Master's", "Low", "Single", "YES"],
+    ["18-35", "Bachelor's", "High", "Single", "NO"],
+    ["<18", "High School", "Low", "Single", "YES"],
+    ["18-35", "Bachelor's", "High", "Married", "NO"],
+    ["36-55", "Bachelor's", "Low", "Married", "NO"],
+    [">55", "Bachelor's", "High", "Single", "YES"],
+    ["36-55", "Master's", "Low", "Married", "NO"],
+    [">55", "Master's", "Low", "Married", "YES"],
+    ["36-55", "Master's", "High", "Single", "YES"],
+    [">55", "Master's", "High", "Single", "YES"],
+    ["<18", "High School", "High", "Single", "NO"],
+    ["36-55", "Master's", "Low", "Single", "YES"],
+    ["36-55", "High School", "Low", "Single", "YES"],
+    ["<18", "High School", "Low", "Married", "YES"],
+    ["18-35", "Bachelor's", "High", "Married", "NO"],
+    [">55", "High School", "High", "Married", "YES"],
+    [">55", "Bachelor's", "Low", "Single", "YES"],
+    ["36-55", "High School", "High", "Married", "NO"]
 ]
 # -----------Calculate the entropy of the 'buys computer' feature (last column)
 
@@ -174,9 +201,27 @@ def get_me_vertex(data):
     # for i, ig in enumerate(information_gains):
     #     print(f"Information Gain for feature {i}: {ig}")
 
+    # -----------returns maxGain = (vertex feature number, (gain, [subset_entropies]))
     maxGain = get_me_max_gain(information_gains=information_gains)
-    # returns (vertex feature number, (gain, [subset_entropies]))
-    print(maxGain)
+
+    root_vertex = maxGain[0]
+    res_touple = maxGain[1][1]
+    print(root_vertex)
+    print(res_touple)
+
+    for i in res_touple:
+        if (i[1] == 0):
+            decision = get_the_decision(data, root_vertex, i[0])
+            print((i[0], decision))
+        else:
+            newData = []
+            print(i[0])
+            newData = get_me_new_data(data, root_vertex, i[0])
+            print(newData)
+
+        print("\n")
+
+    # newData = get_me_new_data(data, 1, "High School")
 
 
 get_me_vertex(data)
