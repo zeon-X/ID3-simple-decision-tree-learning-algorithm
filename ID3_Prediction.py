@@ -132,27 +132,6 @@ def get_me_new_data(data, feature_index, value):
     return newData
 
 # -----------Example usage with your provided dataset
-# data = [
-#     [2, 3, 1, 1, 1],  # 36-55, Master's, High, Single, Yes
-#     [1, 1, 0, 1, 0],  # 18-35, High School, Low, Single, No
-#     [2, 2, 0, 1, 1],  # 36-55, Bachelor's, Low, Single, Yes
-#     [1, 0, 1, 1, 0],  # 18-35, Bachelor's, High, Single, No
-#     [0, 1, 0, 1, 1],  # <18, High School, Low, Single, Yes
-#     [1, 0, 1, 0, 0],  # 18-35, Bachelor's, High, Married, No
-#     [2, 1, 0, 0, 0],  # 36-55, Bachelor's, Low, Married, No
-#     [3, 0, 1, 1, 1],  # >55, Bachelor's, High, Single, Yes
-#     [2, 3, 0, 0, 0],  # 36-55, Master's, Low, Married, No
-#     [3, 3, 0, 0, 1],  # >55, Master's, Low, Married, Yes
-#     [2, 3, 1, 1, 1],  # 36-55, Master's, High, Single, Yes
-#     [3, 3, 1, 1, 1],  # >55, Master's, High, Single, Yes
-#     [0, 1, 1, 1, 0],  # <18, High School, High, Single, No
-#     [2, 3, 0, 1, 1],  # 36-55, Master's, Low, Single, Yes
-#     [2, 1, 0, 1, 1],  # 36-55, High School, Low, Single, Yes
-#     [0, 1, 0, 0, 1],  # <18, High School, Low, Married, Yes
-#     [1, 0, 1, 0, 0],  # 18-35, Bachelor's, High, Married, No
-#     [3, 1, 1, 0, 1],  # >55, High School, High, Married, Yes
-#     [3, 2, 0, 1, 1]   # 36-55, High School, High, Married, No
-# ]
 
 
 data = [
@@ -235,4 +214,38 @@ def get_me_vertex(data):
 
 
 dictionary_tree = get_me_vertex(data)
-print("dictionary_tree: ", dictionary_tree)
+# print("dictionary_tree: ", dictionary_tree)
+
+
+def find_result(tree, input_data):
+    flag = False
+    for feature_index, i in enumerate(input_data):
+        if flag == True:
+            break
+        for j in tree:
+            if flag == True:
+                break
+            if (j[0] == i):
+
+                # print("condition", j[0])
+                # print("result", i)
+                # print("j[1]", j[1])
+
+                if isinstance(j[1], list):
+                    newTree = j[1]
+                    newInputData = input_data[:feature_index] + \
+                        input_data[feature_index+1:]
+
+                    # print("newTree", newTree)
+                    # print("newInputData", newInputData)
+
+                    find_result(newTree, newInputData)
+                else:
+                    print("Result: ", j[1])
+                    flag = True
+                    # return (j[1])
+
+
+# Example usage
+input_data = ["36-55", "Master's", "High", "Single"]
+find_result(dictionary_tree, input_data)

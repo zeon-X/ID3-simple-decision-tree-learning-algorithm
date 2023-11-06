@@ -132,30 +132,8 @@ def get_me_new_data(data, feature_index, value):
 
     return newData
 
+
 # -----------Example usage with your provided dataset
-# data = [
-#     [2, 3, 1, 1, 1],  # 36-55, Master's, High, Single, Yes
-#     [1, 1, 0, 1, 0],  # 18-35, High School, Low, Single, No
-#     [2, 2, 0, 1, 1],  # 36-55, Bachelor's, Low, Single, Yes
-#     [1, 0, 1, 1, 0],  # 18-35, Bachelor's, High, Single, No
-#     [0, 1, 0, 1, 1],  # <18, High School, Low, Single, Yes
-#     [1, 0, 1, 0, 0],  # 18-35, Bachelor's, High, Married, No
-#     [2, 1, 0, 0, 0],  # 36-55, Bachelor's, Low, Married, No
-#     [3, 0, 1, 1, 1],  # >55, Bachelor's, High, Single, Yes
-#     [2, 3, 0, 0, 0],  # 36-55, Master's, Low, Married, No
-#     [3, 3, 0, 0, 1],  # >55, Master's, Low, Married, Yes
-#     [2, 3, 1, 1, 1],  # 36-55, Master's, High, Single, Yes
-#     [3, 3, 1, 1, 1],  # >55, Master's, High, Single, Yes
-#     [0, 1, 1, 1, 0],  # <18, High School, High, Single, No
-#     [2, 3, 0, 1, 1],  # 36-55, Master's, Low, Single, Yes
-#     [2, 1, 0, 1, 1],  # 36-55, High School, Low, Single, Yes
-#     [0, 1, 0, 0, 1],  # <18, High School, Low, Married, Yes
-#     [1, 0, 1, 0, 0],  # 18-35, Bachelor's, High, Married, No
-#     [3, 1, 1, 0, 1],  # >55, High School, High, Married, Yes
-#     [3, 2, 0, 1, 1]   # 36-55, High School, High, Married, No
-# ]
-
-
 data = [
     ["36-55", "Master's", "High", "Single", "YES"],
     ["18-35", "High School", "Low", "Single", "NO"],
