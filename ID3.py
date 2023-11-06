@@ -210,22 +210,31 @@ def get_me_vertex(data):
     # print(root_vertex)
     # print(res_touple)
 
+    temp_dictionary = []
     for i in res_touple:
+        sub_touple = ()
         if (i[1] == 0):
             decision = get_the_decision(data, root_vertex, i[0])
-            print("SUB TREE FOR: ", i[0])
-            print((i[0], (root_vertex, (i[0], decision))))
-        else:
-            newData = []
-            print("SUB TREE FOR: ", i[0])
-            newData = get_me_new_data(data, root_vertex, i[0])
-            # print("SUB TREE: ", newData)
+            # print("FORM_if: ", i[0])
+            # print((i[0], decision))
 
-            get_me_vertex(newData)
+            sub_touple = (decision)
+
+        else:
+            # break
+            newData = []
+            # print("FORM_else: ", i[0])
+            newData = get_me_new_data(data, root_vertex, i[0])
+
+            sub_touple = get_me_vertex(newData)
+            # print("tempRes inside: ", sub_touple)
 
         print("\n")
 
-    # newData = get_me_new_data(data, 1, "High School")
+        temp_dictionary.append((i[0], sub_touple))
+
+    return temp_dictionary
 
 
-get_me_vertex(data)
+tempRes = get_me_vertex(data)
+print("tempRes: ", tempRes)
