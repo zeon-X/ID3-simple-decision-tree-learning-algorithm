@@ -1,6 +1,6 @@
 import math
 
-dictionary_tree = ()
+dictionary_tree = []
 
 
 def calculate_whole_entropy(data, feature_index):
@@ -195,6 +195,7 @@ data = [
 
 
 def get_me_vertex(data):
+
     information_gains = calculate_information_gain(data)
 
     # Print the information gains for each feature
@@ -206,18 +207,21 @@ def get_me_vertex(data):
 
     root_vertex = maxGain[0]
     res_touple = maxGain[1][1]
-    print(root_vertex)
-    print(res_touple)
+    # print(root_vertex)
+    # print(res_touple)
 
     for i in res_touple:
         if (i[1] == 0):
             decision = get_the_decision(data, root_vertex, i[0])
-            print((i[0], decision))
+            print("SUB TREE FOR: ", i[0])
+            print((i[0], (root_vertex, (i[0], decision))))
         else:
             newData = []
-            print(i[0])
+            print("SUB TREE FOR: ", i[0])
             newData = get_me_new_data(data, root_vertex, i[0])
-            print(newData)
+            # print("SUB TREE: ", newData)
+
+            get_me_vertex(newData)
 
         print("\n")
 
