@@ -1,0 +1,44 @@
+digraph {
+	"18-35"
+	N
+	"18-35" -> N
+	O
+	"18-35" -> O
+	">55"
+	Y
+	">55" -> Y
+	E
+	">55" -> E
+	S
+	">55" -> S
+	"36-55"
+	Married
+	"36-55" -> Married
+	N
+	Married -> N
+	O
+	Married -> O
+	Single
+	"36-55" -> Single
+	Y
+	Single -> Y
+	E
+	Single -> E
+	S
+	Single -> S
+	"<18"
+	Low
+	"<18" -> Low
+	Y
+	Low -> Y
+	E
+	Low -> E
+	S
+	Low -> S
+	High
+	"<18" -> High
+	N
+	High -> N
+	O
+	High -> O
+}
