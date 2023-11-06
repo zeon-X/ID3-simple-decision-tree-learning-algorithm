@@ -1,7 +1,5 @@
 import math
 
-dictionary_tree = []
-
 
 def calculate_whole_entropy(data, feature_index):
     total_samples = len(data)
@@ -236,5 +234,5 @@ def get_me_vertex(data):
     return temp_dictionary
 
 
-tempRes = get_me_vertex(data)
-print("tempRes: ", tempRes)
+dictionary_tree = get_me_vertex(data)
+print("dictionary_tree: ", dictionary_tree)
