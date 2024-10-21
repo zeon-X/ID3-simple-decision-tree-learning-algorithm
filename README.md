@@ -22,6 +22,3 @@ ID3 (Iterative Dichotomiser 3) is a classic machine learning algorithm used for 
 
 This repository offers a basic implementation of the ID3 algorithm, which can be extended and customized for specific use cases.
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
